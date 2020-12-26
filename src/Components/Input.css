@@ -1,0 +1,16 @@
+.input {
+	border: 1px solid #333;
+	border-radius: 3px;
+	padding: 7px;
+	width: 200px;
+}
+
+select {
+	margin-left: 13px;
+}
+
+option {
+	font-size: 12px;
+	width: 150px;
+	font-weight: bold;
+}
