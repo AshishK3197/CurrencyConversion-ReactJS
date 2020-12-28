@@ -1,12 +1,30 @@
 import React from "react";
 import "./Input.css";
 
-function Input() {
+function Input({
+	currencyOptionsToSet,
+	selectedCurrency,
+	onChangeCurrency,
+	amount,
+	onChangeAmount,
+}) {
+	// console.log(selectedCurrency);
 	return (
 		<div>
-			<input type="number" className="input" />
-			<select>
-				<option value="Hi">Hi</option>
+			<input
+				type="number"
+				className="input"
+				value={amount}
+				onChange={onChangeAmount}
+			/>
+			<select value={selectedCurrency} onChange={onChangeCurrency}>
+				{currencyOptionsToSet.map((currency) => {
+					return (
+						<option key={currency} value={currency}>
+							{currency}
+						</option>
+					);
+				})}
 			</select>
 		</div>
 	);
