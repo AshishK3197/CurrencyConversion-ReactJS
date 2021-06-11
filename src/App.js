@@ -53,18 +53,24 @@ function App() {
 
 	useEffect(() => {
 		async function fetchData() {
-			const request = await axios.get();
-			// console.log(request);
-			setCurrencyOptions([
-				request.data.base,
-				...Object.keys(request.data.rates),
-			]); //only setting keys of dictionary into state considering base value and all the other values in the aaray using spread operatort
+			try {
+				const request = await axios.get();
+				// console.log(request);
+				setCurrencyOptions([
+					request.data.base,
+					...Object.keys(request.data.rates),
+				]);
 
-			const firstCurrency = Object.keys(request.data.rates)[0];
-			setFromCurrency(request.data.base);
-			setToCurrency(firstCurrency);
-			setExchangeRate(request.data.rates[firstCurrency]);
-			return request;
+				//only setting keys of dictionary into state considering base value and all the other values in the aaray using spread operatort
+
+				const firstCurrency = Object.keys(request.data.rates)[0];
+				setFromCurrency(request.data.base);
+				setToCurrency(firstCurrency);
+				setExchangeRate(request.data.rates[firstCurrency]);
+				return request;
+			} catch (error) {
+				console.log(error);
+			}
 		}
 
 		fetchData();
